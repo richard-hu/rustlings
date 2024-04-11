@@ -1,0 +1,678 @@
+From 8ce8ff73bc647f599aad68d9f34d2e8b0fbd7d20 Mon Sep 17 00:00:00 2001
+From: Richard Hu <richard.hu@technexion.com>
+Date: Thu, 11 Apr 2024 21:45:53 +0800
+Subject: [PATCH] Upload correct answers
+
+---
+ exercises/functions/functions1.rs             |  6 ++++--
+ exercises/functions/functions2.rs             |  4 +---
+ exercises/functions/functions3.rs             |  4 +---
+ exercises/functions/functions4.rs             |  4 +---
+ exercises/functions/functions5.rs             |  3 +--
+ exercises/if/if1.rs                           |  8 +++++++-
+ exercises/if/if2.rs                           |  6 +++---
+ exercises/if/if3.rs                           |  5 ++---
+ exercises/intro/intro1.rs                     |  1 -
+ exercises/intro/intro2.rs                     |  3 +--
+ exercises/move_semantics/move_semantics1.rs   |  4 +---
+ exercises/move_semantics/move_semantics2.rs   |  6 ++----
+ exercises/move_semantics/move_semantics3.rs   |  6 ++----
+ exercises/move_semantics/move_semantics4.rs   |  6 ++----
+ exercises/move_semantics/move_semantics5.rs   | 16 +++++++++++-----
+ exercises/move_semantics/move_semantics6.rs   | 17 ++++++++---------
+ exercises/primitive_types/primitive_types1.rs |  3 +--
+ exercises/primitive_types/primitive_types2.rs |  5 ++---
+ exercises/primitive_types/primitive_types3.rs |  9 ++++++---
+ exercises/primitive_types/primitive_types4.rs |  4 +---
+ exercises/primitive_types/primitive_types5.rs |  5 ++---
+ exercises/primitive_types/primitive_types6.rs |  4 +---
+ exercises/quiz1.rs                            | 11 +++++++++--
+ exercises/variables/variables1.rs             |  4 +---
+ exercises/variables/variables2.rs             |  4 +---
+ exercises/variables/variables3.rs             |  4 +---
+ exercises/variables/variables4.rs             |  4 +---
+ exercises/variables/variables5.rs             |  6 ++----
+ exercises/variables/variables6.rs             |  4 +---
+ exercises/vecs/vecs1.rs                       |  4 +---
+ exercises/vecs/vecs2.rs                       |  7 +++----
+ 31 files changed, 80 insertions(+), 97 deletions(-)
+
+diff --git a/exercises/functions/functions1.rs b/exercises/functions/functions1.rs
+index 40ed9a0..b9402d8 100644
+--- a/exercises/functions/functions1.rs
++++ b/exercises/functions/functions1.rs
+@@ -3,8 +3,10 @@
+ // Execute `rustlings hint functions1` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+     call_me();
+ }
++
++fn call_me() {
++    println!("I was called!");
++}
+\ No newline at end of file
+diff --git a/exercises/functions/functions2.rs b/exercises/functions/functions2.rs
+index 5154f34..6c236d5 100644
+--- a/exercises/functions/functions2.rs
++++ b/exercises/functions/functions2.rs
+@@ -3,13 +3,11 @@
+ // Execute `rustlings hint functions2` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+     call_me(3);
+ }
+ 
+-fn call_me(num:) {
++fn call_me(num:i32) {
+     for i in 0..num {
+         println!("Ring! Call number {}", i + 1);
+     }
+diff --git a/exercises/functions/functions3.rs b/exercises/functions/functions3.rs
+index 74f44d6..4d6697a 100644
+--- a/exercises/functions/functions3.rs
++++ b/exercises/functions/functions3.rs
+@@ -3,10 +3,8 @@
+ // Execute `rustlings hint functions3` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+-    call_me();
++    call_me(3);
+ }
+ 
+ fn call_me(num: u32) {
+diff --git a/exercises/functions/functions4.rs b/exercises/functions/functions4.rs
+index 77c4b2a..aec6cf3 100644
+--- a/exercises/functions/functions4.rs
++++ b/exercises/functions/functions4.rs
+@@ -8,14 +8,12 @@
+ // Execute `rustlings hint functions4` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+     let original_price = 51;
+     println!("Your sale price is {}", sale_price(original_price));
+ }
+ 
+-fn sale_price(price: i32) -> {
++fn sale_price(price: i32) -> i32 {
+     if is_even(price) {
+         price - 10
+     } else {
+diff --git a/exercises/functions/functions5.rs b/exercises/functions/functions5.rs
+index f1b63f4..a9dd1b5 100644
+--- a/exercises/functions/functions5.rs
++++ b/exercises/functions/functions5.rs
+@@ -3,7 +3,6 @@
+ // Execute `rustlings hint functions5` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+ 
+ fn main() {
+     let answer = square(3);
+@@ -11,5 +10,5 @@ fn main() {
+ }
+ 
+ fn square(num: i32) -> i32 {
+-    num * num;
++    num * num
+ }
+diff --git a/exercises/if/if1.rs b/exercises/if/if1.rs
+index 4734d78..8d93eb8 100644
+--- a/exercises/if/if1.rs
++++ b/exercises/if/if1.rs
+@@ -2,13 +2,19 @@
+ //
+ // Execute `rustlings hint if1` or use the `hint` watch subcommand for a hint.
+ 
+-// I AM NOT DONE
+ 
+ pub fn bigger(a: i32, b: i32) -> i32 {
+     // Complete this function to return the bigger number!
+     // Do not use:
+     // - another function call
+     // - additional variables
++    // - comparison operators other than `>`
++    // - logical operators other than `&&`
++    if a > b {
++        return a;
++    } else {
++        return b;
++    }
+ }
+ 
+ // Don't mind this for now :)
+diff --git a/exercises/if/if2.rs b/exercises/if/if2.rs
+index f512f13..9ae278f 100644
+--- a/exercises/if/if2.rs
++++ b/exercises/if/if2.rs
+@@ -5,13 +5,13 @@
+ //
+ // Execute `rustlings hint if2` or use the `hint` watch subcommand for a hint.
+ 
+-// I AM NOT DONE
+-
+ pub fn foo_if_fizz(fizzish: &str) -> &str {
+     if fizzish == "fizz" {
+         "foo"
++    } else if fizzish == "fuzz" {
++        "bar"
+     } else {
+-        1
++        "baz"
+     }
+ }
+ 
+diff --git a/exercises/if/if3.rs b/exercises/if/if3.rs
+index 1696274..80088f1 100644
+--- a/exercises/if/if3.rs
++++ b/exercises/if/if3.rs
+@@ -2,17 +2,16 @@
+ //
+ // Execute `rustlings hint if3` or use the `hint` watch subcommand for a hint.
+ 
+-// I AM NOT DONE
+ 
+ pub fn animal_habitat(animal: &str) -> &'static str {
+     let identifier = if animal == "crab" {
+         1
+     } else if animal == "gopher" {
+-        2.0
++        2
+     } else if animal == "snake" {
+         3
+     } else {
+-        "Unknown"
++        4
+     };
+ 
+     // DO NOT CHANGE THIS STATEMENT BELOW
+diff --git a/exercises/intro/intro1.rs b/exercises/intro/intro1.rs
+index 37fa011..6bb098a 100644
+--- a/exercises/intro/intro1.rs
++++ b/exercises/intro/intro1.rs
+@@ -13,7 +13,6 @@
+ // Execute `rustlings hint intro1` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+ 
+ fn main() {
+     println!("Hello and");
+diff --git a/exercises/intro/intro2.rs b/exercises/intro/intro2.rs
+index 990b20f..ba657e2 100644
+--- a/exercises/intro/intro2.rs
++++ b/exercises/intro/intro2.rs
+@@ -5,8 +5,7 @@
+ // Execute `rustlings hint intro2` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+ 
+ fn main() {
+-    println!("Hello {}!");
++    println!("Hello !");
+ }
+diff --git a/exercises/move_semantics/move_semantics1.rs b/exercises/move_semantics/move_semantics1.rs
+index e063937..3b76ccc 100644
+--- a/exercises/move_semantics/move_semantics1.rs
++++ b/exercises/move_semantics/move_semantics1.rs
+@@ -3,8 +3,6 @@
+ // Execute `rustlings hint move_semantics1` or use the `hint` watch subcommand
+ // for a hint.
+ 
+-// I AM NOT DONE
+-
+ #[test]
+ fn main() {
+     let vec0 = vec![22, 44, 66];
+@@ -15,7 +13,7 @@ fn main() {
+ }
+ 
+ fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
+-    let vec = vec;
++    let mut vec = vec;
+ 
+     vec.push(88);
+ 
+diff --git a/exercises/move_semantics/move_semantics2.rs b/exercises/move_semantics/move_semantics2.rs
+index baf6bcc..ac5ca29 100644
+--- a/exercises/move_semantics/move_semantics2.rs
++++ b/exercises/move_semantics/move_semantics2.rs
+@@ -5,14 +5,12 @@
+ // Execute `rustlings hint move_semantics2` or use the `hint` watch subcommand
+ // for a hint.
+ 
+-// I AM NOT DONE
+-
+ #[test]
+ fn main() {
+     let vec0 = vec![22, 44, 66];
+ 
+-    let mut vec1 = fill_vec(vec0);
+-
++    let mut vec1 = fill_vec(vec0.clone());
++    //fill_vec takes the ownership，所以vec0已失效
+     assert_eq!(vec0, vec![22, 44, 66]);
+     assert_eq!(vec1, vec![22, 44, 66, 88]);
+ }
+diff --git a/exercises/move_semantics/move_semantics3.rs b/exercises/move_semantics/move_semantics3.rs
+index 7af9e69..e989401 100644
+--- a/exercises/move_semantics/move_semantics3.rs
++++ b/exercises/move_semantics/move_semantics3.rs
+@@ -6,18 +6,16 @@
+ // Execute `rustlings hint move_semantics3` or use the `hint` watch subcommand
+ // for a hint.
+ 
+-// I AM NOT DONE
+-
+ #[test]
+ fn main() {
+     let vec0 = vec![22, 44, 66];
+ 
+-    let mut vec1 = fill_vec(vec0);
++    let vec1 = fill_vec(vec0);
+ 
+     assert_eq!(vec1, vec![22, 44, 66, 88]);
+ }
+ 
+-fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
++fn fill_vec(mut vec: Vec<i32>) -> Vec<i32> {
+     vec.push(88);
+ 
+     vec
+diff --git a/exercises/move_semantics/move_semantics4.rs b/exercises/move_semantics/move_semantics4.rs
+index 80b49db..1e76b21 100644
+--- a/exercises/move_semantics/move_semantics4.rs
++++ b/exercises/move_semantics/move_semantics4.rs
+@@ -7,13 +7,11 @@
+ // Execute `rustlings hint move_semantics4` or use the `hint` watch subcommand
+ // for a hint.
+ 
+-// I AM NOT DONE
+-
+ #[test]
+ fn main() {
+     let vec0 = vec![22, 44, 66];
+ 
+-    let mut vec1 = fill_vec(vec0);
++    let mut vec1 = fill_vec();
+ 
+     assert_eq!(vec1, vec![22, 44, 66, 88]);
+ }
+@@ -21,7 +19,7 @@ fn main() {
+ // `fill_vec()` no longer takes `vec: Vec<i32>` as argument - don't change this!
+ fn fill_vec() -> Vec<i32> {
+     // Instead, let's create and fill the Vec in here - how do you do that?
+-    let mut vec = vec;
++    let mut vec = vec![22, 44, 66];
+ 
+     vec.push(88);
+ 
+diff --git a/exercises/move_semantics/move_semantics5.rs b/exercises/move_semantics/move_semantics5.rs
+index 267bdcc..6cedf8d 100644
+--- a/exercises/move_semantics/move_semantics5.rs
++++ b/exercises/move_semantics/move_semantics5.rs
+@@ -6,14 +6,20 @@
+ // Execute `rustlings hint move_semantics5` or use the `hint` watch subcommand
+ // for a hint.
+ 
+-// I AM NOT DONE
+-
+ #[test]
+ fn main() {
+-    let mut x = 100;
++  let mut x = 100;
++
++  {
+     let y = &mut x;
+-    let z = &mut x;
+     *y += 100;
++  }
++
++  {
++    let z = &mut x;
+     *z += 1000;
+-    assert_eq!(x, 1200);
++  }
++
++  assert_eq!(x, 1200);
+ }
++
+diff --git a/exercises/move_semantics/move_semantics6.rs b/exercises/move_semantics/move_semantics6.rs
+index cace4ca..51d5686 100644
+--- a/exercises/move_semantics/move_semantics6.rs
++++ b/exercises/move_semantics/move_semantics6.rs
+@@ -5,14 +5,12 @@
+ // Execute `rustlings hint move_semantics6` or use the `hint` watch subcommand
+ // for a hint.
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+     let data = "Rust is great!".to_string();
+ 
+-    get_char(data);
++    get_char(data.clone());
+ 
+-    string_uppercase(&data);
++    string_uppercase(data);
+ }
+ 
+ // Should not take ownership
+@@ -21,8 +19,9 @@ fn get_char(data: String) -> char {
+ }
+ 
+ // Should take ownership
+-fn string_uppercase(mut data: &String) {
+-    data = &data.to_uppercase();
+-
+-    println!("{}", data);
+-}
++fn string_uppercase(data: String) -> String {
++    let uppercase = data.to_uppercase();
++    println!("{}", uppercase);
++    uppercase
++  }
++  
+diff --git a/exercises/primitive_types/primitive_types1.rs b/exercises/primitive_types/primitive_types1.rs
+index 3663340..0f585d7 100644
+--- a/exercises/primitive_types/primitive_types1.rs
++++ b/exercises/primitive_types/primitive_types1.rs
+@@ -3,7 +3,6 @@
+ // Fill in the rest of the line that has code missing! No hints, there's no
+ // tricks, just get used to typing these :)
+ 
+-// I AM NOT DONE
+ 
+ fn main() {
+     // Booleans (`bool`)
+@@ -13,7 +12,7 @@ fn main() {
+         println!("Good morning!");
+     }
+ 
+-    let // Finish the rest of this line like the example! Or make it be false!
++    let is_evening = false;
+     if is_evening {
+         println!("Good evening!");
+     }
+diff --git a/exercises/primitive_types/primitive_types2.rs b/exercises/primitive_types/primitive_types2.rs
+index f1616ed..4b29632 100644
+--- a/exercises/primitive_types/primitive_types2.rs
++++ b/exercises/primitive_types/primitive_types2.rs
+@@ -3,8 +3,6 @@
+ // Fill in the rest of the line that has code missing! No hints, there's no
+ // tricks, just get used to typing these :)
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+     // Characters (`char`)
+ 
+@@ -19,7 +17,8 @@ fn main() {
+         println!("Neither alphabetic nor numeric!");
+     }
+ 
+-    let // Finish this line like the example! What's your favorite character?
++    let your_character = '🦀';
++    // Finish this line like the example! What's your favorite character?
+     // Try a letter, try a number, try a special character, try a character
+     // from a different language than your own, try an emoji!
+     if your_character.is_alphabetic() {
+diff --git a/exercises/primitive_types/primitive_types3.rs b/exercises/primitive_types/primitive_types3.rs
+index 8b0de44..62e50b2 100644
+--- a/exercises/primitive_types/primitive_types3.rs
++++ b/exercises/primitive_types/primitive_types3.rs
+@@ -5,10 +5,13 @@
+ // Execute `rustlings hint primitive_types3` or use the `hint` watch subcommand
+ // for a hint.
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+-    let a = ???
++    let mut a: [i32; 100] = [0; 100];
++
++    // TODO: fill the array with some values
++    for i in 0..100 {
++        a[i] = i as i32;
++    }
+ 
+     if a.len() >= 100 {
+         println!("Wow, that's a big array!");
+diff --git a/exercises/primitive_types/primitive_types4.rs b/exercises/primitive_types/primitive_types4.rs
+index d44d877..60dc3e0 100644
+--- a/exercises/primitive_types/primitive_types4.rs
++++ b/exercises/primitive_types/primitive_types4.rs
+@@ -5,13 +5,11 @@
+ // Execute `rustlings hint primitive_types4` or use the `hint` watch subcommand
+ // for a hint.
+ 
+-// I AM NOT DONE
+-
+ #[test]
+ fn slice_out_of_array() {
+     let a = [1, 2, 3, 4, 5];
+ 
+-    let nice_slice = ???
++    let nice_slice = &a[1..4];//實際只有a[1], a[2], a[3]是有意義的，所以slice的起點是1，結束點是4。
+ 
+     assert_eq!([2, 3, 4], nice_slice)
+ }
+diff --git a/exercises/primitive_types/primitive_types5.rs b/exercises/primitive_types/primitive_types5.rs
+index f646986..6574aed 100644
+--- a/exercises/primitive_types/primitive_types5.rs
++++ b/exercises/primitive_types/primitive_types5.rs
+@@ -5,11 +5,10 @@
+ // Execute `rustlings hint primitive_types5` or use the `hint` watch subcommand
+ // for a hint.
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+     let cat = ("Furry McFurson", 3.5);
+-    let /* your pattern here */ = cat;
++    // Destructure the `cat` tuple here
++    let (name, age) = cat;
+ 
+     println!("{} is {} years old.", name, age);
+ }
+diff --git a/exercises/primitive_types/primitive_types6.rs b/exercises/primitive_types/primitive_types6.rs
+index 07cc46c..0ed7cfd 100644
+--- a/exercises/primitive_types/primitive_types6.rs
++++ b/exercises/primitive_types/primitive_types6.rs
+@@ -6,13 +6,11 @@
+ // Execute `rustlings hint primitive_types6` or use the `hint` watch subcommand
+ // for a hint.
+ 
+-// I AM NOT DONE
+-
+ #[test]
+ fn indexing_tuple() {
+     let numbers = (1, 2, 3);
+     // Replace below ??? with the tuple indexing syntax.
+-    let second = ???;
++    let second = numbers.1;
+ 
+     assert_eq!(2, second,
+         "This is not the 2nd number in the tuple!")
+diff --git a/exercises/quiz1.rs b/exercises/quiz1.rs
+index 4ee5ada..de56cac 100644
+--- a/exercises/quiz1.rs
++++ b/exercises/quiz1.rs
+@@ -13,10 +13,17 @@
+ //
+ // No hints this time ;)
+ 
+-// I AM NOT DONE
+ 
+ // Put your function here!
+-// fn calculate_price_of_apples {
++fn calculate_price_of_apples(quantity: i32) -> i32 {
++
++    let mut price = 2;
++    if quantity > 40 {
++        price = 1;
++    }
++
++    return quantity * price;
++}
+ 
+ // Don't modify this function!
+ #[test]
+diff --git a/exercises/variables/variables1.rs b/exercises/variables/variables1.rs
+index b3e089a..98a0cf2 100644
+--- a/exercises/variables/variables1.rs
++++ b/exercises/variables/variables1.rs
+@@ -5,9 +5,7 @@
+ // Execute `rustlings hint variables1` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+-    x = 5;
++    let x = 5;
+     println!("x has the value {}", x);
+ }
+diff --git a/exercises/variables/variables2.rs b/exercises/variables/variables2.rs
+index e1c23ed..59f9a02 100644
+--- a/exercises/variables/variables2.rs
++++ b/exercises/variables/variables2.rs
+@@ -3,10 +3,8 @@
+ // Execute `rustlings hint variables2` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+-    let x;
++    let x = 10;
+     if x == 10 {
+         println!("x is ten!");
+     } else {
+diff --git a/exercises/variables/variables3.rs b/exercises/variables/variables3.rs
+index 86bed41..a7d4af3 100644
+--- a/exercises/variables/variables3.rs
++++ b/exercises/variables/variables3.rs
+@@ -3,9 +3,7 @@
+ // Execute `rustlings hint variables3` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+-    let x: i32;
++    let x: i32=10;
+     println!("Number {}", x);
+ }
+diff --git a/exercises/variables/variables4.rs b/exercises/variables/variables4.rs
+index 5394f39..c75843e 100644
+--- a/exercises/variables/variables4.rs
++++ b/exercises/variables/variables4.rs
+@@ -3,10 +3,8 @@
+ // Execute `rustlings hint variables4` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+-    let x = 3;
++    let mut x = 3;
+     println!("Number {}", x);
+     x = 5; // don't change this line
+     println!("Number {}", x);
+diff --git a/exercises/variables/variables5.rs b/exercises/variables/variables5.rs
+index a29b38b..df789a3 100644
+--- a/exercises/variables/variables5.rs
++++ b/exercises/variables/variables5.rs
+@@ -3,11 +3,9 @@
+ // Execute `rustlings hint variables5` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+-
+ fn main() {
+-    let number = "T-H-R-E-E"; // don't change this line
++    let number:&str = "T-H-R-E-E"; // don't change this line
+     println!("Spell a Number : {}", number);
+-    number = 3; // don't rename this variable
++    let number:i32 = 3; // don't rename this variable
+     println!("Number plus two is : {}", number + 2);
+ }
+diff --git a/exercises/variables/variables6.rs b/exercises/variables/variables6.rs
+index 853183b..de4511f 100644
+--- a/exercises/variables/variables6.rs
++++ b/exercises/variables/variables6.rs
+@@ -3,9 +3,7 @@
+ // Execute `rustlings hint variables6` or use the `hint` watch subcommand for a
+ // hint.
+ 
+-// I AM NOT DONE
+-
+-const NUMBER = 3;
++const NUMBER:i32 = 3;
+ fn main() {
+     println!("Number {}", NUMBER);
+ }
+diff --git a/exercises/vecs/vecs1.rs b/exercises/vecs/vecs1.rs
+index 65b7a7f..c1b8cfa 100644
+--- a/exercises/vecs/vecs1.rs
++++ b/exercises/vecs/vecs1.rs
+@@ -7,11 +7,9 @@
+ //
+ // Execute `rustlings hint vecs1` or use the `hint` watch subcommand for a hint.
+ 
+-// I AM NOT DONE
+-
+ fn array_and_vec() -> ([i32; 4], Vec<i32>) {
+     let a = [10, 20, 30, 40]; // a plain array
+-    let v = // TODO: declare your vector here with the macro for vectors
++    let v = vec![10, 20, 30, 40]; // a vector
+ 
+     (a, v)
+ }
+diff --git a/exercises/vecs/vecs2.rs b/exercises/vecs/vecs2.rs
+index e92c970..a11834e 100644
+--- a/exercises/vecs/vecs2.rs
++++ b/exercises/vecs/vecs2.rs
+@@ -7,13 +7,12 @@
+ //
+ // Execute `rustlings hint vecs2` or use the `hint` watch subcommand for a hint.
+ 
+-// I AM NOT DONE
+-
+ fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
+     for element in v.iter_mut() {
++        //如果我们希望迭代可变引用，则可以调用   iter_mut  而不是   iter
+         // TODO: Fill this up so that each element in the Vec `v` is
+         // multiplied by 2.
+-        ???
++        *element *= 2;
+     }
+ 
+     // At this point, `v` should be equal to [4, 8, 12, 16, 20].
+@@ -24,7 +23,7 @@ fn vec_map(v: &Vec<i32>) -> Vec<i32> {
+     v.iter().map(|element| {
+         // TODO: Do the same thing as above - but instead of mutating the
+         // Vec, you can just return the new number!
+-        ???
++        *element * 2
+     }).collect()
+ }
+ 
+-- 
+2.25.1
+
